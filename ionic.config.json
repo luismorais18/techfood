@@ -1,0 +1,7 @@
+{
+  "name": "techfood",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
