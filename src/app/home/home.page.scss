@@ -1,11 +1,16 @@
 #container {
   text-align: center;
-
+  margin-left: 10px;
+  margin-right: 10px;
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 10%;
+  // transform: translateY(-50%);
+}
+
+h1, h2, h3, h4, h5 {
+  margin-left: 10px;
 }
 
 #container strong {
@@ -24,4 +29,14 @@
 
 #container a {
   text-decoration: none;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
 }
