@@ -1,16 +1,25 @@
 <!-- Plate image -->
 <ion-content [fullscreen]="true">
-  <img src="https://picsum.photos/500/200">
+  <ion-fab vertical="top" horizontal="start" slot="fixed" [routerLink]="['']">
+    <ion-fab-button>
+      <ion-icon name="arrow-back-outline" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <img src="https://picsum.photos/500/200" class="img-plate">
   <ion-grid>
     <ion-row>
+      <!-- Name of the plate -->
       <ion-col>
           <h3>Francesinha</h3>
           <span class="span-delivery"><ion-icon name="bicycle-outline"></ion-icon> 0.0 €</span>
       </ion-col>
+
+      <!-- Rating -->
       <ion-col style="text-align: right;">
           <h3><ion-icon size="small" name="star-sharp"></ion-icon> 4,6</h3>
       </ion-col>
 
+      <!-- Description -->
       <ion-col size="12" class="ion-text-justify">
         <ion-text >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porta nulla arcu, a congue diam volutpat eu.
           Quisque vitae sapien vel augue tempus faucibus porta a sapien. Suspendisse ornare orci at semper mattis.
@@ -19,26 +28,36 @@
           diam et euismod sagittis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
            Aenean ut augue eu neque congue euismod eget sit amet urna. Aliquam pellentesque a magna ut pulvinar. </ion-text >
       </ion-col>
+
+      <!-- Ingredients -->
+      <ion-col size="12" class="ion-text-justify">
+
+      </ion-col>
+
+      <!-- Notes/Observations text area -->
       <ion-col size="12">
           <ion-textarea class="textarea-note" placeholder="Deixar um recado, tal como, sem picante ou extra molho"></ion-textarea>
       </ion-col>
 
-      <ion-col size="12">
+      <!-- Two columns for buttons (plus, minus and add to cart) -->
+      <ion-col size="6">
         <ion-grid>
           <ion-row>
-
-            <ion-col style="text-align: center; border: 1px solid red;">
-              <ion-button color="light"><ion-icon size="large" name="remove-outline"></ion-icon></ion-button>
+            <ion-col style="display:flex;justify-content:center;align-items:center;">
+              <ion-button (click)="decrementQuantity()" [disabled]="plateQuantity == 0" color="light"><ion-icon size="large" name="remove-outline"></ion-icon></ion-button>
               </ion-col>
-            <ion-col style="text-align: center; border: 1px solid red;">
-              <h1>1</h1>
+            <ion-col style="display:flex;justify-content:center;align-items:center;">
+              {{plateQuantity}}
             </ion-col>
-            <ion-col style="text-align: center;border: 1px solid red;">
-              <ion-button color="light"><ion-icon size="large" name="add-outline"></ion-icon></ion-button>
+            <ion-col style="display:flex;justify-content:center;align-items:center;">
+              <ion-button (click)="incrementQuantity()" color="light"><ion-icon size="large" name="add-outline"></ion-icon></ion-button>
             </ion-col>
 
           </ion-row>
         </ion-grid>
+      </ion-col>
+      <ion-col size="6" style="display:flex;justify-content:flex-end;align-items:center;">
+        <ion-button [disabled]="plateQuantity == 0" color="success"><ion-icon size="small" name="cart-outline"></ion-icon> Adicionar {{platePriceDisplay}} € </ion-button>
       </ion-col>
 
     </ion-row>
