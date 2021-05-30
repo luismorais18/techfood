@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Carrinho } from 'src/Classes/carrinho';
 import { Item } from 'src/Classes/item';
@@ -10,37 +11,15 @@ export class JsonServiceService {
 
   private cart:Carrinho;
 
-  constructor() { }
-
-  clearCart(){
-
-  }
-
-  getCart(){
-    let temp= new Item();
-    return new Observable (observer => {
-      fetch('./assets/JSONFiles/Cart.json')
-      .then(resposta => resposta.json())
-      .then(json => {
-        for(var i in json){
-          temp.nome=json[i]["nome"];
-          temp.preco=json[i]["preco"];
-          temp.conteudo=json[i]["conteudo"];
-          this.cart.lista.push(temp);
-        }
-        observer.next(this.cart);
-        observer.complete();
-      });
-    })
-  }
+  constructor(private router: Router, private rotaAtiva: ActivatedRoute) { }
 
   getItens(){
-    let list:Array<Item>;
-    let temp= new Item();
+    let list = new Array<Item>();
     fetch('./assets/JSONFiles/Itens.json')
       .then(resposta => resposta.json())
       .then(json => {
         for(var i in json){
+          let temp= new Item();
           temp.nome=json[i]["nome"];
           temp.preco=json[i]["preco"];
           temp.conteudo=json[i]["conteudo"];
@@ -48,5 +27,26 @@ export class JsonServiceService {
         }
       });
     return list;
+  }
+
+  goRota(rota: string,item:Item){
+    const extras: NavigationExtras = {
+      state: {
+        item: item
+      }
+    }
+    this.router.navigate([rota], extras);
+  }
+
+  getPlate() {
+    return new Observable (observador => {
+      this.rotaAtiva.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          const plate: any = this.router.getCurrentNavigation().extras.state.item;
+          observador.next(plate);
+          observador.complete();
+        }
+      });
+    });
   }
 }

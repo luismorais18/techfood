@@ -33,39 +33,10 @@
   <div>
     <h5>Descontos diretos</h5>
     <div class="scrolling-wrapper">
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
+      <ion-card *ngFor="let item of itens" class="card" (click)="verPrato(item)">
+        <img src="https://source.unsplash.com/200x100/?food" />
         <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
+          <ion-card-subtitle>{{item.nome}}</ion-card-subtitle>
         </ion-card-header>
       </ion-card>
     </div>
@@ -74,80 +45,10 @@
   <div>
     <h5>Tendencias</h5>
     <div class="scrolling-wrapper">
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
+      <ion-card *ngFor="let item of itens" class="card" (click)="verPrato(item)">
+        <img src="https://source.unsplash.com/200x100/?food" />
         <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-
-  <div>
-    <h5>Tendencias</h5>
-    <div class="scrolling-wrapper">
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
-        </ion-card-header>
-      </ion-card>
-      <ion-card class="card" [routerLink]="['/plate']">
-        <img src="https://picsum.photos/200/100" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-
+          <ion-card-subtitle>{{item.nome}}</ion-card-subtitle>
         </ion-card-header>
       </ion-card>
     </div>

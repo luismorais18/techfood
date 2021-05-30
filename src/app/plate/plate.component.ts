@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/Classes/item';
+import { JsonServiceService } from '../services/json-service.service';
 
 @Component({
   selector: 'app-plate',
@@ -7,27 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlateComponent implements OnInit {
 
-  plateQuantity: number = 1;
-  platePrice: number = 12.34; // TODO This variable will be filled from info of a database or any other data repository
-  platePriceDisplay: number = this.platePrice; // Variable that will show the price to the customer
+  item:any;
+  quantidade:number;
+  platePriceDisplay:number;
 
-  constructor() { }
+  constructor(private jsonService:JsonServiceService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.jsonService.getPlate().subscribe(plate => {
+      this.item = plate;
+    });
+    this.quantidade = 1;
+    this.platePriceDisplay=this.item.preco;
+  }
 
   incrementQuantity() {
-    this.plateQuantity++;
+    this.quantidade++;
     this.updatePrice()
 
   }
 
   decrementQuantity() {
-    this.plateQuantity--;
+    this.quantidade--;
     this.updatePrice();
   }
 
   updatePrice() {
-    this.platePriceDisplay = Math.round((this.platePrice * this.plateQuantity) * 100) / 100; // Round to two decimal places
+    this.platePriceDisplay = Math.round((this.item.preco * this.quantidade) * 100) / 100; // Round to two decimal places
+  }
+
+  adicionar(){
+
   }
 
 }

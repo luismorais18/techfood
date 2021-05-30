@@ -10,7 +10,7 @@
     <ion-row>
       <!-- Name of the plate -->
       <ion-col>
-          <h3>Francesinha</h3>
+          <h3>{{item.nome}}</h3>
           <span class="span-delivery"><ion-icon name="bicycle-outline"></ion-icon> 0.0 €</span>
       </ion-col>
 
@@ -22,11 +22,7 @@
       <!-- Description -->
       <ion-col size="12" class="ion-text-justify">
         <ion-text >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porta nulla arcu, a congue diam volutpat eu.
-          Quisque vitae sapien vel augue tempus faucibus porta a sapien. Suspendisse ornare orci at semper mattis.
-          Donec id nulla bibendum, vehicula risus eu, tincidunt tellus. Sed cursus fringilla tristique. Nulla est nunc,
-          auctor vitae placerat nec, lacinia sed nunc. Curabitur pretium porta ipsum quis suscipit. Pellentesque consectetur
-          diam et euismod sagittis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-           Aenean ut augue eu neque congue euismod eget sit amet urna. Aliquam pellentesque a magna ut pulvinar. </ion-text >
+          Quisque vitae sapien vel augue tempus faucibus porta a sapien. . </ion-text >
       </ion-col>
 
       <!-- Ingredients -->
@@ -44,10 +40,10 @@
         <ion-grid>
           <ion-row>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
-              <ion-button (click)="decrementQuantity()" [disabled]="plateQuantity == 0" color="light"><ion-icon size="large" name="remove-outline"></ion-icon></ion-button>
+              <ion-button (click)="decrementQuantity()" [disabled]="quantidade == 0" color="light"><ion-icon size="large" name="remove-outline"></ion-icon></ion-button>
               </ion-col>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
-              {{plateQuantity}}
+              {{quantidade}}
             </ion-col>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
               <ion-button (click)="incrementQuantity()" color="light"><ion-icon size="large" name="add-outline"></ion-icon></ion-button>
@@ -57,7 +53,7 @@
         </ion-grid>
       </ion-col>
       <ion-col size="6" style="display:flex;justify-content:flex-end;align-items:center;">
-        <ion-button [disabled]="plateQuantity == 0" color="success"><ion-icon size="small" name="cart-outline"></ion-icon> Adicionar {{platePriceDisplay}} € </ion-button>
+        <ion-button [disabled]="quantidade == 0" color="success"><ion-icon size="small" name="cart-outline" (click)="adicionar()"></ion-icon> Adicionar {{platePriceDisplay}} € </ion-button>
       </ion-col>
 
     </ion-row>
