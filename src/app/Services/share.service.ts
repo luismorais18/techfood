@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Carrinho } from 'src/Classes/carrinho';
+import { Item } from 'src/Classes/item';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ export class ShareService {
   /**
    * Variable to store the data of the cart
    */
-  private carrinho = new BehaviorSubject<Carrinho>(null); // TODO ajietar este any
+  private lista = new BehaviorSubject<Array<Item>>([]); // TODO ajietar este any
 
   /**
    * Get data of the cart
    */
-  carrinhoAtual = this.carrinho.asObservable();
+  listaAtual = this.lista.asObservable();
 
 
   constructor() { }
@@ -24,7 +25,7 @@ export class ShareService {
   * Update the data of the cart
   * @param cart Cart object
   */
-  changeCart(cart: Carrinho) { // TODO ajeitar este any
-    this.carrinho.next(cart);
+  atualizarLista(lista: Array<Item>) { // TODO ajeitar este any
+    this.lista.next(lista);
   }
 }

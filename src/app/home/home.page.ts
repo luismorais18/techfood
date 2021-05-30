@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { Carrinho } from 'src/Classes/carrinho';
 import { Item } from 'src/Classes/item';
 import { CarrinhoPage } from '../carrinho/carrinho/carrinho.page';
-import { JsonServiceService } from '../services/json-service.service';
+import { JsonServiceService } from '../Services/json-service.service';
+import { ShareService } from '../Services/share.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   car:Carrinho;
   itens:Array<Item>;
 
-  constructor(private modalController: ModalController, private ctrl: NavController, private jsonService :JsonServiceService) {
+  constructor(
+    private modalController: ModalController,
+    private ctrl: NavController,
+    private jsonService :JsonServiceService,
+    private share: ShareService) {
     this.itens=this.jsonService.getItens();
+  }
+  ngOnInit(): void {
   }
 
   async carrinho(){

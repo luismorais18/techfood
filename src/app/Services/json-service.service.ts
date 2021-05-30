@@ -23,6 +23,9 @@ export class JsonServiceService {
           temp.nome=json[i]["nome"];
           temp.preco=json[i]["preco"];
           temp.conteudo=json[i]["conteudo"];
+          temp.conteudoOriginal=json[i]["conteudoOriginal"];
+          console.log(temp);
+
           list.push(temp);
         }
       });

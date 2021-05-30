@@ -1,6 +1,14 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { PlateService } from 'src/app/services/cart/plate.service';
+import { JsonServiceService } from 'src/app/Services/json-service.service';
+import { ShareService } from 'src/app/Services/share.service';
+import { Item } from 'src/Classes/item';
+
+
 
 @Component({
   selector: 'app-cart-plate',
@@ -9,45 +17,37 @@ import { PlateService } from 'src/app/services/cart/plate.service';
 })
 export class CartPlateComponent implements OnInit {
 
-  ingredientList: any[];
-  ingredientListOriginal: any[];
+  plate: Item = new Item;
   changedPlate: boolean = false;
 
+  checkboxList: { val: String, isChecked: boolean }[] = [];
+  lista: Array<Item> = [];
+  conteudo: String[] = [];
 
-  constructor(private plateService: PlateService, public toastController: ToastController) { }
+  constructor(
+    public toastController: ToastController,
+    private jsonService: JsonServiceService,
+    private share: ShareService,
+    private router: Router) { }
 
   ngOnInit() {
+    // get the ingredients/content of the plate
+    this.jsonService.getPlate().subscribe((res: any) => {
+      this.plate = res;
+      console.log(this.plate);
 
-    this.plateService.getIngredients().subscribe((response) => {
-      this.ingredientList = response;
+      for (let i = 0; i < this.plate.conteudoOriginal.length; i++) {
+
+        if(this.plate.conteudo.includes(this.plate.conteudoOriginal[i])) {
+          this.checkboxList.push( { val:this.plate.conteudoOriginal[i], isChecked: true })
+        } else {
+          this.checkboxList.push( { val:this.plate.conteudoOriginal[i], isChecked: false })
+        }
+      }
     });
-  }
 
-  increaseQuantity(id: number) {
-    for (let i = 0; i < this.ingredientList.length; i++) {
-      if(this.ingredientList[i].id == id) {
-        this.ingredientList[i].quantity++;
-      }
-    }
 
-    if(this.ingredientList === this.ingredientListOriginal) {
-      this.changedPlate = false;
-    } else {
-      this.changedPlate = true;
-    }
-  }
-
-  decreaseQuantity(id: number) {
-    for (let i = 0; i < this.ingredientList.length; i++) {
-      if(this.ingredientList[i].id == id && this.ingredientList[i].quantity > 0) {
-        this.ingredientList[i].quantity--;
-      }
-    }
-    if(this.ingredientList === this.ingredientListOriginal) {
-      this.changedPlate = false;
-    } else {
-      this.changedPlate = true;
-    }
+    this.share.listaAtual.subscribe((res: Array<Item>) => { this.lista = res; });
   }
 
   async presentToast() {
@@ -58,20 +58,26 @@ export class CartPlateComponent implements OnInit {
     toast.present();
   }
 
-
-  save() {
-
-    let ingredientQuantity = 0;
-    for (let i = 0; i < this.ingredientList.length; i++) {
-      if(this.ingredientList[i].quantity == 0) {
-        ingredientQuantity++;
+  checkboxListToArray(list: { val: String, isChecked: boolean }[]) {
+    let temp: String[] = []
+    for (let i = 0; i < list.length; i++) {
+      if(list[i].isChecked) {
+        temp.push(this.checkboxList[i].val);
       }
     }
-    if(ingredientQuantity == this.ingredientList.length) {
-      this.presentToast();
-    } else {
+    return temp;
+  }
 
 
+  save() {
+    for (let i = 0; i < this.lista.length; i++) {
+      console.log("Estou a verificar o nome");
+      if(this.lista[i].nome == this.plate.nome) {
+        this.lista[i].conteudo = this.checkboxListToArray(this.checkboxList);
+      }
     }
+
+    this.share.atualizarLista(this.lista);
+    this.router.navigate(['/cart']);
   }
 }

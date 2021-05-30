@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'plate', component: PlateComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'cart/:plateID', component: CartPlateComponent }
+  { path: 'cart/cart-plate', component: CartPlateComponent }
 ];
 
 @NgModule({

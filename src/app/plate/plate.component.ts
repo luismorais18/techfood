@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/Classes/item';
-import { JsonServiceService } from '../services/json-service.service';
+import { JsonServiceService } from '../Services/json-service.service';
+import { ShareService } from '../Services/share.service';
 
 @Component({
   selector: 'app-plate',
@@ -12,8 +14,11 @@ export class PlateComponent implements OnInit {
   item:any;
   quantidade:number;
   platePriceDisplay:number;
+  lista: Item[];
 
-  constructor(private jsonService:JsonServiceService) { }
+  constructor(private jsonService:JsonServiceService,
+              private share: ShareService,
+              private router: Router) { }
 
   ngOnInit() {
     this.jsonService.getPlate().subscribe(plate => {
@@ -39,7 +44,16 @@ export class PlateComponent implements OnInit {
   }
 
   adicionar(){
+    this.share.listaAtual.subscribe((res: Array<Item>) => {
+      this.lista = res;
+    })
 
+
+    this.lista.push(this.item);
+    this.share.atualizarLista(this.lista);
+    console.log(this.lista);
+
+    this.router.navigate(['']);
   }
 
 }
