@@ -47,9 +47,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-  <div style="display:flex;justify-content:center;align-items:center;">
-    <ion-button class="button-continue" color="success">Continuar para checkout</ion-button>
-  </div>
 </ion-content>
+<ion-toolbar class="ion-padding">
+  <div style="display:flex;justify-content:center;align-items:center;">
+    <ion-button class="button-continue" color="tertiary" [routerLink]="['/pagamento']">Continuar para checkout</ion-button>
+  </div>
+</ion-toolbar>

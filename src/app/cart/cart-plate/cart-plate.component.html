@@ -2,16 +2,16 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button [routerLink]="['/cart']" >
-        <ion-icon name="arrow-back-outline"></ion-icon>
+        <ion-icon name="arrow-back-outline" style="color:#D4C5C7"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title style="color:#D4C5C7">
       Editar item
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <img src="https://picsum.photos/500/200" class="img-plate">
+  <img src="https://source.unsplash.com/500x200/?food" class="img-plate">
   <ion-grid>
     <ion-row>
       <!-- Name of the plate -->
@@ -28,9 +28,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-list>
-    <ion-item *ngFor="let entry of checkboxList">
-      <ion-label>{{entry.val}}</ion-label>
+  <ion-list >
+    <ion-item *ngFor="let entry of checkboxList" >
+      <ion-label style="color: #3C3744;" >{{entry.val}}</ion-label>
       <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
     </ion-item>
   </ion-list>

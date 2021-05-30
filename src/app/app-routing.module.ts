@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'historico',
     loadChildren: () => import('./Historico/historico/historico.module').then( m => m.HistoricoPageModule)
+  },  {
+    path: 'pagamento',
+    loadChildren: () => import('./Pagamento/pagamento/pagamento.module').then( m => m.PagamentoPageModule)
   }
+
 ];
 
 @NgModule({

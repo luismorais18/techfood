@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "techfood",
+  "appId": "io.ionic.techfood",
+  "appName": "TechFood",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
