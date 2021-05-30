@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/cart']" >
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Editar item
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <img src="https://picsum.photos/500/200" class="img-plate">
+  <ion-grid>
+    <ion-row>
+      <!-- Name of the plate -->
+      <ion-col>
+          <h3>Francesinha</h3>
+          <span class="span-delivery"><ion-icon name="bicycle-outline"></ion-icon> 0.0 €</span>
+      </ion-col>
+
+      <!-- Rating -->
+      <ion-col style="text-align: right;">
+          <h3><ion-icon size="small" name="star-sharp"></ion-icon> 4,6</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item *ngFor="let i of ingredientList">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2" style="display:flex;justify-content:flex-start;align-items:center;">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="2" style="display:flex;justify-content:flex-start;align-items:center;">
+            <span>{{ i.quantity }}</span>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ i.ingredient }}</ion-label>
+          </ion-col>
+          <ion-col  style="display:flex;justify-content:flex-end;align-items:center;">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

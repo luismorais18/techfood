@@ -1,0 +1,8 @@
+[{"id":1,"plate_id":1,"quantity":2,"ingredient":"Bife","price":2.54},
+  {"id":2,"plate_id":2,"quantity":3,"ingredient":"Salada","price":4.31},
+  {"id":3,"plate_id":3,"quantity":5,"ingredient":"Tomate","price":3.84},
+  {"id":4,"plate_id":4,"quantity":5,"ingredient":"Molho Expecial da casa","price":3.3},
+  {"id":5,"plate_id":5,"quantity":4,"ingredient":"Pickles","price":1.23},
+  {"id":6,"plate_id":6,"quantity":4,"ingredient":"Ananás","price":4.48},
+  {"id":7,"plate_id":7,"quantity":1,"ingredient":"Azeitonas","price":4.95},
+  {"id":8,"plate_id":8,"quantity":3,"ingredient":"Queijo Grana Padano","price":4.44}]

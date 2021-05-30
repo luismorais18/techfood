@@ -1,0 +1,18 @@
+ion-list {
+  --ion-item-background: transparent;
+}
+.span-delivery {
+  background: var(--ion-color-danger);
+  color: var(--ion-color-danger-contrast);
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.button-continue {
+  position: absolute;
+  bottom: 2%;
+  border-radius: 6px;
+  width: 80%;
+}
+
+
