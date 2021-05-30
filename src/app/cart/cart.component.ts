@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-cart',
@@ -8,11 +9,14 @@ import { AlertController } from '@ionic/angular';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController, public appComponent: AppComponent) { }
 
   ngOnInit() {}
 
   async presentAlertMultipleButtons() {
+
+    // this.appComponent.carrinho
+
     this.alertController.create({
       header: 'Remover',
       subHeader: 'Tem a certeza que deseja remover o item?',
