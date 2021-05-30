@@ -10,5 +10,16 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let i of historico">
+    <ion-card-header>
+      <ion-card-title style="color:#D4C5C7">Pedido</ion-card-title>
+      <label *ngFor="let j of i" style="color:#D4C5C7">{{j.nome}}<br></label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-icon style="color:#D4C5C7" slot="primary" size="large" name="add-outline"></ion-icon>
+      <ion-icon style="color:#D4C5C7" slot="primary" size="large" name="repeat-outline"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
 
 </ion-content>

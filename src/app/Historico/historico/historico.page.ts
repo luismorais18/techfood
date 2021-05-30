@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonServiceService } from 'src/app/services/json-service.service';
+import { Item } from 'src/Classes/item';
 
 @Component({
   selector: 'app-historico',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricoPage implements OnInit {
 
-  constructor() { }
+  historico:Array<Array<Item>>;
+
+  constructor(private jsonService:JsonServiceService) {
+    this.historico=jsonService.getHistorico();
+  }
 
   ngOnInit() {
   }
+
+
 
 }

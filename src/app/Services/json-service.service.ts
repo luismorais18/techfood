@@ -59,14 +59,15 @@ export class JsonServiceService {
           let tempList = new Array<Item>();
           for(var j in json[i]){
             let temp= new Item();
-            temp.nome=json[i]["nome"];
-            temp.preco=json[i]["preco"];
-            temp.conteudo=json[i]["conteudo"];
+            temp.nome=json[i][j]["nome"];
+            temp.preco=json[i][j]["preco"];
+            temp.conteudo=json[i][j]["conteudo"];
             tempList.push(temp);
           }
           list.push(tempList);
         }
       });
+    console.log(list);
     return list;
   }
 
