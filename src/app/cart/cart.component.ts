@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
 
   async presentAlertMultipleButtons() {
 
-    // this.appComponent.carrinho
+    this.appComponent.carrinho
 
     this.alertController.create({
       header: 'Remover',
