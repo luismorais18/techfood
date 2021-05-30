@@ -22,10 +22,8 @@ export class CartComponent implements OnInit {
               private jsonService: JsonServiceService) { }
 
   ngOnInit() {
-    this.carrinho.lista = [];
     this.shareService.listaAtual.subscribe((res: Array<Item>) => {
-      
-      this.carrinho.lista = res;
+      this.lista = res;
     })
   }
 
@@ -33,7 +31,7 @@ export class CartComponent implements OnInit {
     this.jsonService.goRota("cart/cart-plate",item)
   }
 
-  async presentAlertMultipleButtons() {
+  async alertRemoveItem(item: Item) {
     this.alertController.create({
       header: 'Remover',
       subHeader: 'Tem a certeza que deseja remover o item?',
@@ -47,7 +45,11 @@ export class CartComponent implements OnInit {
         {
           text: 'Sim',
           handler: (data: any) => {
-            console.log('Saved Information', data);
+            for (let i = 0; i < this.lista.length; i++) {
+              if(this.lista[i].nome == item.nome) {
+                this.lista.splice(i, 1);
+              }
+            }
           }
         }
       ]

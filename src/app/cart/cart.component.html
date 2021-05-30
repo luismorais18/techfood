@@ -14,15 +14,15 @@
 <!-- {{ carrinho.lista | json}} -->
 
 <ion-content [fullscreen]="true">
-  <ion-list *ngIf="carrinho && carrinho.lista.length > 0">
-    <ion-item *ngFor="let item of carrinho.lista" >
+  <ion-list *ngIf="carrinho && lista.length > 0">
+    <ion-item *ngFor="let item of lista" >
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-label (click)="verPrato(item)"><span class="cart-quantity"></span> {{ item.nome }} <span class="cart-price"> {{ item.preco }} €</span></ion-label>
           </ion-col>
           <ion-col  style="display:flex;justify-content:flex-end;align-items:center;">
-            <ion-icon (click)="presentAlertMultipleButtons()" size="normal" name="trash-outline"></ion-icon>
+            <ion-icon (click)="alertRemoveItem(item)" size="normal" name="trash-outline"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
