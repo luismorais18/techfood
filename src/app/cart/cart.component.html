@@ -11,13 +11,15 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- {{ carrinho.lista | json}} -->
+
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item>
+  <ion-list *ngIf="carrinho && carrinho.lista.length > 0">
+    <ion-item *ngFor="let item of carrinho.lista" >
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-label [routerLink]="['123']"><span class="cart-quantity">1 x</span> Menu francesinha <span class="cart-price"> 20,00 €</span></ion-label>
+            <ion-label [routerLink]="['123']"><span class="cart-quantity"></span> {{ item.nome }} <span class="cart-price"> {{ item.preco }} €</span></ion-label>
           </ion-col>
           <ion-col  style="display:flex;justify-content:flex-end;align-items:center;">
             <ion-icon (click)="presentAlertMultipleButtons()" size="normal" name="trash-outline"></ion-icon>

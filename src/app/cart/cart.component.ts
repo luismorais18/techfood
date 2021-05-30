@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Carrinho } from 'src/Classes/carrinho';
+import { Item } from 'src/Classes/item';
 import { AppComponent } from '../app.component';
+import { ShareService } from '../Services/share.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,14 +12,24 @@ import { AppComponent } from '../app.component';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public alertController: AlertController, public appComponent: AppComponent) { }
+  lista:Item[] = [];
+  carrinho: Carrinho = new Carrinho;
 
-  ngOnInit() {}
+
+
+  constructor(public alertController: AlertController,
+              public appComponent: AppComponent,
+              private shareService: ShareService) { }
+
+  ngOnInit() {
+    this.carrinho.lista = [];
+    this.shareService.carrinhoAtual.subscribe((res: Carrinho) => {
+      this.carrinho.lista.push({"nome":"sashimi", "preco":10.0, "conteudo":["arroz","peixe","molho de soja"]});
+      this.carrinho.lista.push({"nome":"Hamburger", "preco":10.0, "conteudo":["Pao","carne","Queijo","Tomate","Alface","Ketchup"]});
+    })
+  }
 
   async presentAlertMultipleButtons() {
-
-    this.appComponent.carrinho
-
     this.alertController.create({
       header: 'Remover',
       subHeader: 'Tem a certeza que deseja remover o item?',
@@ -38,5 +51,7 @@ export class CartComponent implements OnInit {
       res.present();
     });
   }
+
+
 
 }
