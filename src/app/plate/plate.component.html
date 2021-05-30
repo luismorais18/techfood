@@ -1,11 +1,11 @@
 <!-- Plate image -->
 <ion-content [fullscreen]="true">
-  <ion-fab vertical="top" horizontal="start" slot="fixed" [routerLink]="['']">
-    <ion-fab-button>
+  <ion-fab vertical="top" horizontal="start" slot="fixed" style="color:#D4C5C7" [routerLink]="['']">
+    <ion-fab-button >
       <ion-icon name="arrow-back-outline" ></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <img src="https://picsum.photos/500/200" class="img-plate">
+  <img src="https://source.unsplash.com/500x200/?food" class="img-plate">
   <ion-grid>
     <ion-row>
       <!-- Name of the plate -->
@@ -21,8 +21,7 @@
 
       <!-- Description -->
       <ion-col size="12" class="ion-text-justify">
-        <ion-text >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porta nulla arcu, a congue diam volutpat eu.
-          Quisque vitae sapien vel augue tempus faucibus porta a sapien. . </ion-text >
+        <ion-text >{{cont}}</ion-text >
       </ion-col>
 
       <!-- Ingredients -->
@@ -40,13 +39,13 @@
         <ion-grid>
           <ion-row>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
-              <ion-button (click)="decrementQuantity()" [disabled]="quantidade == 0" color="light"><ion-icon size="large" name="remove-outline"></ion-icon></ion-button>
+              <ion-button (click)="decrementQuantity()" [disabled]="quantidade == 0" color="light"><ion-icon name="remove-outline"></ion-icon></ion-button>
               </ion-col>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
               {{quantidade}}
             </ion-col>
             <ion-col style="display:flex;justify-content:center;align-items:center;">
-              <ion-button (click)="incrementQuantity()" color="light"><ion-icon size="large" name="add-outline"></ion-icon></ion-button>
+              <ion-button (click)="incrementQuantity()" color="light"><ion-icon name="add-outline"></ion-icon></ion-button>
             </ion-col>
 
           </ion-row>

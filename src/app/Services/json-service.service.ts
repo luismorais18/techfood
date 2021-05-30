@@ -52,4 +52,26 @@ export class JsonServiceService {
       });
     });
   }
+
+  getHistorico(){
+    let list = new Array<Array<Item>>();
+    fetch('./assets/JSONFiles/historico.json')
+      .then(resposta => resposta.json())
+      .then(json => {
+        for(var i in json){
+          let tempList = new Array<Item>();
+          for(var j in json[i]){
+            let temp= new Item();
+            temp.nome=json[i][j]["nome"];
+            temp.preco=json[i][j]["preco"];
+            temp.conteudo=json[i][j]["conteudo"];
+            tempList.push(temp);
+          }
+          list.push(tempList);
+        }
+      });
+    console.log(list);
+    return list;
+  }
+
 }

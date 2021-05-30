@@ -5,6 +5,7 @@ import { Item } from 'src/Classes/item';
 import { CarrinhoPage } from '../carrinho/carrinho/carrinho.page';
 import { JsonServiceService } from '../Services/json-service.service';
 import { ShareService } from '../Services/share.service';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,9 @@ export class HomePage implements OnInit {
     private modalController: ModalController,
     private ctrl: NavController,
     private jsonService :JsonServiceService,
-    private share: ShareService) {
+    private share: ShareService,
+    private orientacao: ScreenOrientation)  {
+    this.orientacao.lock(this.orientacao.ORIENTATIONS.PORTRAIT);
     this.itens=this.jsonService.getItens();
   }
   ngOnInit(): void {

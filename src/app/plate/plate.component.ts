@@ -15,6 +15,7 @@ export class PlateComponent implements OnInit {
   quantidade:number;
   platePriceDisplay:number;
   lista: Item[];
+  cont:string;
 
   constructor(private jsonService:JsonServiceService,
               private share: ShareService,
@@ -26,6 +27,10 @@ export class PlateComponent implements OnInit {
     });
     this.quantidade = 1;
     this.platePriceDisplay=this.item.preco;
+    this.cont="Conteudo:";
+    for(var i in this.item.conteudo){
+      this.cont= `${this.cont} ${this.item.conteudo[i]}`
+    }
   }
 
   incrementQuantity() {

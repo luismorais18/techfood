@@ -12,7 +12,8 @@ export class AppComponent implements OnInit{
   public carrinho: Carrinho = null;
 
   ngOnInit(): void {
-
   }
+
+
 
 }
