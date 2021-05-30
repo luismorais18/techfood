@@ -1,0 +1,33 @@
+{
+  "27 Maio":{
+    "3":{
+      "nome":"Sushi Variado",
+      "preco":10.0,
+      "conteudo":["arroz","peixe","alga","molho de soja","manga"]
+    },
+    "4":{
+      "nome":"Agua",
+      "preco":1.0,
+      "conteudo":[]
+    }
+  },
+  "28 Maio":{
+    "6":{
+      "nome":"Pizza Havaiiana",
+      "preco":12.0,
+      "conteudo":["Molho de Tomate","Queijo","Fiambre","Ananás"]
+    }
+  },
+  "30 Maio":{
+    "2":{
+      "nome":"Hamburger",
+      "preco":10.0,
+      "conteudo":["Pão","Carne","Queijo","Tomate","Alface","Ketchup"]
+    },
+    "5":{
+      "nome":"Coca-Cola",
+      "preco":2.0,
+      "conteudo":[]
+    }
+  }
+}
