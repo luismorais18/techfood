@@ -9,7 +9,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'plate', component: PlateComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'cart/:plateID', component: CartPlateComponent }
+  { path: 'cart/:plateID', component: CartPlateComponent },  {
+    path: 'historico',
+    loadChildren: () => import('./Historico/historico/historico.module').then( m => m.HistoricoPageModule)
+  }
+
 ];
 
 @NgModule({
