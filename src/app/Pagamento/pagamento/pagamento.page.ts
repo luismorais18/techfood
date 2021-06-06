@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareService } from 'src/app/Services/share.service';
+import { Item } from 'src/Classes/item';
 
 @Component({
   selector: 'app-pagamento',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagamentoPage implements OnInit {
 
-  constructor() { }
+  constructor(private shareService: ShareService) { }
 
   ngOnInit() {
+  }
+
+  terminar(){
+    let lista:Array<Item>;
+    lista=[];
+    this.shareService.atualizarLista(lista);
   }
 
 }
