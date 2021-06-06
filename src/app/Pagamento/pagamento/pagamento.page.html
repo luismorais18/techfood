@@ -13,24 +13,24 @@
   <ion-radio-group>
     <ion-item>
       <ion-label>Dinheiro</ion-label>
-      <ion-radio value="Dinheiro"></ion-radio>
+      <ion-radio value="Dinheiro" (ionFocus)="toggleRadio('D')"></ion-radio>
     </ion-item>
 
     <ion-item style="background-color=#FFFFFF">
       <ion-label>Cartão de Credito</ion-label>
-      <ion-radio value="Cartão de Credito"></ion-radio>
+      <ion-radio value="Cartão de Credito" (ionFocus)="toggleRadio('CC')"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>MB Way</ion-label>
-      <ion-radio value="MB Way"></ion-radio>
+      <ion-radio value="MB Way" (ionFocus)="toggleRadio('MB')"></ion-radio>
     </ion-item>
   </ion-radio-group>
 
 </ion-content>
 <ion-toolbar class="ion-padding">
   <div style="display:flex;justify-content:center;align-items:center;">
-    <ion-button color="#D4C5C7" class="button-continue"  expand="full" color="tertiary" [routerLink]="['/']" (click)="terminar()">Terminar</ion-button>
+    <ion-button color="#D4C5C7" class="button-continue"  expand="full" color="tertiary" [routerLink]="['/ready']" (click)="terminar()">Terminar</ion-button>
   </div>
 
 </ion-toolbar>

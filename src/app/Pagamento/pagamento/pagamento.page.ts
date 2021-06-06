@@ -9,6 +9,8 @@ import { Item } from 'src/Classes/item';
 })
 export class PagamentoPage implements OnInit {
 
+  paymentMode: String = "";
+
   constructor(private shareService: ShareService) { }
 
   ngOnInit() {
@@ -18,6 +20,11 @@ export class PagamentoPage implements OnInit {
     let lista:Array<Item>;
     lista=[];
     this.shareService.atualizarLista(lista);
+  }
+
+  toggleRadio(param: String) {
+    this.paymentMode = param;
+
   }
 
 }
