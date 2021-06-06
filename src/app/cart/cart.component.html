@@ -11,8 +11,6 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- {{ carrinho.lista | json}} -->
-
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="carrinho && lista.length > 0">
     <ion-item *ngFor="let item of lista" >
@@ -43,13 +41,13 @@
         <h5>Total</h5>
       </ion-col>
       <ion-col style="display:flex;justify-content:flex-end;align-items:center;">
-        <h5> 20,00 € </h5>
+        <h5> {{ preco }} € </h5>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 <ion-toolbar class="ion-padding">
   <div style="display:flex;justify-content:center;align-items:center;">
-    <ion-button class="button-continue" color="tertiary" [routerLink]="['/pagamento']">Continuar para checkout</ion-button>
+    <ion-button class="button-continue" color="tertiary" [routerLink]="['/pagamento']">Continuar para pagamento</ion-button>
   </div>
 </ion-toolbar>

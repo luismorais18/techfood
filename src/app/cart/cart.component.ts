@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
 
   lista:Item[] = [];
   carrinho: Carrinho = new Carrinho;
+  preco: number = 0;
 
   constructor(public alertController: AlertController,
               public appComponent: AppComponent,
@@ -24,6 +25,9 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.shareService.listaAtual.subscribe((res: Array<Item>) => {
       this.lista = res;
+      for (let i = 0; i < this.lista.length; i++) {
+        this.preco += this.lista[i].preco;
+      }
     })
   }
 
@@ -48,6 +52,7 @@ export class CartComponent implements OnInit {
             for (let i = 0; i < this.lista.length; i++) {
               if(this.lista[i].nome == item.nome) {
                 this.lista.splice(i, 1);
+                this.preco = this.preco - this.lista[i].preco;
               }
             }
           }

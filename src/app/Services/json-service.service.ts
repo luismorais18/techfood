@@ -71,7 +71,6 @@ export class JsonServiceService {
           list.push(tempList);
         }
       });
-    console.log(list);
     return list;
   }
 
