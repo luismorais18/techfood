@@ -16,6 +16,9 @@ export class HomePage implements OnInit {
   car:Carrinho;
   itens:Array<Item>;
   quantidadeCarrinho: number = 0;
+  pesquisa: string = "";
+  filteredItems: any;
+  itensCopy: Item[];
 
   constructor(
     private modalController: ModalController,
@@ -25,6 +28,7 @@ export class HomePage implements OnInit {
     private orientacao: ScreenOrientation)  {
     this.orientacao.lock(this.orientacao.ORIENTATIONS.PORTRAIT);
     this.itens=this.jsonService.getItens();
+    this.itensCopy = this.itens;
   }
 
   ngOnInit(): void {
@@ -45,4 +49,16 @@ export class HomePage implements OnInit {
     this.jsonService.goRota("plate",item)
   }
 
+  assignCopy(){
+    this.filteredItems = Object.assign([], this.itens);
+  }
+  filterItem(value){
+
+    this.itens = this.itensCopy;
+
+    if(value) {
+      this.itens = this.itens.filter((i: Item) => i.nome.toLowerCase().includes(value.toLowerCase()));
+    }
+  }
 }
+

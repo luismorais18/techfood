@@ -4,4 +4,7 @@ export class Item {
   conteudo:String[];
   conteudoOriginal:String[];
   quantidade: number;
+  imagem: String;
+  imagemGrande: String;
+  imagemPequena: String;
 }

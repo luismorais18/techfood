@@ -20,7 +20,7 @@
             <ion-label (click)="verPrato(item)" style="display:flex;align-items:center;">
               <ion-row>
                 <ion-col  style="display:flex;align-items:center;">
-                  <img style="margin-right: 3px" src="https://source.unsplash.com/50x50/?food" class="img-plate" style="margin-right: 3px;">
+                  <img style="margin-right: 3px" [src]="item.imagemPequena" class="img-plate" style="margin-right: 3px;">
                 </ion-col>
                 <ion-col >
                   <h3 style="margin-right: 3px">{{ item.nome }} </h3> <br>

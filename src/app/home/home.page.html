@@ -26,18 +26,17 @@
 
   <div style="margin-top: 10px">
     <ion-item>
-      <ion-label position="floating" style="color:#3C3744">Pesquisar</ion-label>
-      <ion-input style="color:#3C3744" clearInput ></ion-input>
+      <ion-label  position="floating" style="color:#3C3744">Pesquisar</ion-label>
+      <ion-input #inputPesquisa style="color:#3C3744" clearInput  [(ngModel)]="pesquisa" (input)="filterItem(inputPesquisa.value)" ></ion-input>
     </ion-item>
   <!-- Input with clear button when there is a value -->
 
   </div>
-
   <div>
     <h5>Descontos diretos</h5>
     <div class="scrolling-wrapper">
       <ion-card *ngFor="let item of itens" class="card" (click)="verPrato(item)">
-        <img src="https://source.unsplash.com/200x100/?food" />
+        <img [src]="item.imagem" />
         <ion-card-header>
           <ion-card-subtitle style="color:#D4C5C7">{{item.nome}}</ion-card-subtitle>
         </ion-card-header>
@@ -49,7 +48,7 @@
     <h5>Tendências</h5>
     <div class="scrolling-wrapper">
       <ion-card *ngFor="let item of itens" class="card" (click)="verPrato(item)">
-        <img src="https://source.unsplash.com/200x100/?food" />
+        <img [src]="item.imagem" />
         <ion-card-header>
           <ion-card-subtitle style="color:#D4C5C7">{{item.nome}}</ion-card-subtitle>
         </ion-card-header>

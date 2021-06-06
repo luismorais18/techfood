@@ -24,8 +24,9 @@ export class JsonServiceService {
           temp.preco=json[i]["preco"];
           temp.conteudo=json[i]["conteudo"];
           temp.conteudoOriginal=json[i]["conteudoOriginal"];
-          console.log(temp);
-
+          temp.imagem=json[i]["imagem"];
+          temp.imagemGrande=json[i]["imagemGrande"];
+          temp.imagemPequena=json[i]["imagemPequena"];
           list.push(temp);
         }
       });
@@ -67,6 +68,9 @@ export class JsonServiceService {
             temp.conteudo=json[i][j]["conteudo"];
             temp.conteudoOriginal=json[i][j]["conteudoOriginal"];
             temp.quantidade=json[i][j]["quantidade"];
+            temp.imagem=json[i][j]["imagem"];
+            temp.imagemGrande=json[i][j]["imagemGrande"];
+            temp.imagemPequena=json[i][j]["imagemPequena"];
             tempList.push(temp);
           }
           list.push(tempList);
