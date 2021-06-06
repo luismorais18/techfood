@@ -13,10 +13,11 @@ import { CartPlateComponent } from './cart/cart-plate/cart-plate.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HistoricoPage } from './Historico/historico/historico.page';
 
 
 @NgModule({
-  declarations: [AppComponent, PlateComponent, CartComponent, CartPlateComponent],
+  declarations: [AppComponent, PlateComponent, CartComponent, CartPlateComponent, HistoricoPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },ScreenOrientation],
