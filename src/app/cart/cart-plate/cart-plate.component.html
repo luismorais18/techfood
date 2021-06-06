@@ -35,6 +35,24 @@
     </ion-item>
   </ion-list>
 
+  <ion-grid>
+    <ion-col>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="display:flex;justify-content:center;align-items:center;">
+            <ion-button (click)="decrementQuantity()" [disabled]="plate.quantidade <= 1" color="light"><ion-icon name="remove-outline"></ion-icon></ion-button>
+            </ion-col>
+          <ion-col style="display:flex;justify-content:center;align-items:center;">
+            {{ plate.quantidade }}
+          </ion-col>
+          <ion-col style="display:flex;justify-content:center;align-items:center;">
+            <ion-button (click)="incrementQuantity()" color="light"><ion-icon name="add-outline"></ion-icon></ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-grid>
   <div style="display:flex;justify-content:center;align-items:center;">
     <ion-button class="button-continue" (click)="save()" color="success">Guardar alterações</ion-button>
   </div>

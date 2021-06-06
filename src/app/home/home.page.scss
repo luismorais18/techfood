@@ -40,3 +40,10 @@ h1, h2, h3, h4, h5 {
     display: inline-block;
   }
 }
+
+ion-badge {
+  position: absolute;
+  top: 0;
+  right: -0.2rem;
+  opacity: 1;
+}

@@ -23,6 +23,8 @@ export class CartPlateComponent implements OnInit {
   checkboxList: { val: String, isChecked: boolean }[] = [];
   lista: Array<Item> = [];
   conteudo: String[] = [];
+  quantidade: any;
+  platePriceDisplay: number;
 
   constructor(
     public toastController: ToastController,
@@ -34,8 +36,6 @@ export class CartPlateComponent implements OnInit {
     // get the ingredients/content of the plate
     this.jsonService.getPlate().subscribe((res: any) => {
       this.plate = res;
-      console.log(this.plate);
-
       for (let i = 0; i < this.plate.conteudoOriginal.length; i++) {
 
         if(this.plate.conteudo.includes(this.plate.conteudoOriginal[i])) {
@@ -45,7 +45,6 @@ export class CartPlateComponent implements OnInit {
         }
       }
     });
-
 
     this.share.listaAtual.subscribe((res: Array<Item>) => { this.lista = res; });
   }
@@ -71,13 +70,22 @@ export class CartPlateComponent implements OnInit {
 
   save() {
     for (let i = 0; i < this.lista.length; i++) {
-      console.log("Estou a verificar o nome");
       if(this.lista[i].nome == this.plate.nome) {
         this.lista[i].conteudo = this.checkboxListToArray(this.checkboxList);
+        console.log(this.lista[i].nome + " - " + this.lista[i].quantidade);
       }
     }
-
     this.share.atualizarLista(this.lista);
     this.router.navigate(['/cart']);
+  }
+
+
+  incrementQuantity() {
+    this.plate.quantidade++;
+
+  }
+
+  decrementQuantity() {
+    this.plate.quantidade--;
   }
 }

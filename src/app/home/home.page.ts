@@ -15,6 +15,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 export class HomePage implements OnInit {
   car:Carrinho;
   itens:Array<Item>;
+  quantidadeCarrinho: number = 0;
 
   constructor(
     private modalController: ModalController,
@@ -25,7 +26,12 @@ export class HomePage implements OnInit {
     this.orientacao.lock(this.orientacao.ORIENTATIONS.PORTRAIT);
     this.itens=this.jsonService.getItens();
   }
+
   ngOnInit(): void {
+    this.share.listaAtual.subscribe((res: Array<Item>) => {
+      this.quantidadeCarrinho = res.length;
+
+    });
   }
 
   async carrinho(){

@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
 
   lista:Item[] = [];
   carrinho: Carrinho = new Carrinho;
-  preco: number = 0;
+  precoTotal: number = 0;
 
   constructor(public alertController: AlertController,
               public appComponent: AppComponent,
@@ -24,10 +24,13 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.shareService.listaAtual.subscribe((res: Array<Item>) => {
-      this.lista = res;
-      for (let i = 0; i < this.lista.length; i++) {
-        this.preco += this.lista[i].preco;
+      this.lista = [];
+      this.precoTotal = 0;
+      for (let i = 0; i < res.length; i++) {
+        this.precoTotal += res[i].preco * res[i].quantidade;
       }
+
+      this.lista = res;
     })
   }
 
@@ -52,7 +55,7 @@ export class CartComponent implements OnInit {
             for (let i = 0; i < this.lista.length; i++) {
               if(this.lista[i].nome == item.nome) {
                 this.lista.splice(i, 1);
-                this.preco = this.preco - this.lista[i].preco;
+                this.precoTotal = this.precoTotal - ( item.preco * item.quantidade) ;
               }
             }
           }
@@ -62,7 +65,4 @@ export class CartComponent implements OnInit {
       res.present();
     });
   }
-
-
-
 }

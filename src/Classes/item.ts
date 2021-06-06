@@ -3,4 +3,5 @@ export class Item {
   preco:number;
   conteudo:String[];
   conteudoOriginal:String[];
+  quantidade: number;
 }

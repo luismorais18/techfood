@@ -11,7 +11,7 @@ import { ShareService } from '../Services/share.service';
 })
 export class PlateComponent implements OnInit {
 
-  item:any;
+  item: Item;
   quantidade:number;
   platePriceDisplay:number;
   lista: Item[];
@@ -22,10 +22,11 @@ export class PlateComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.jsonService.getPlate().subscribe(plate => {
+    this.jsonService.getPlate().subscribe((plate: Item) => {
       this.item = plate;
     });
     this.quantidade = 1;
+    this.item.quantidade = 1;
     this.platePriceDisplay=this.item.preco;
     this.cont="Conteudo:";
     for(var i in this.item.conteudo){
@@ -35,12 +36,14 @@ export class PlateComponent implements OnInit {
 
   incrementQuantity() {
     this.quantidade++;
+    this.item.quantidade = this.quantidade;
     this.updatePrice()
 
   }
 
   decrementQuantity() {
     this.quantidade--;
+    this.item.quantidade = this.quantidade;
     this.updatePrice();
   }
 
@@ -52,11 +55,8 @@ export class PlateComponent implements OnInit {
     this.share.listaAtual.subscribe((res: Array<Item>) => {
       this.lista = res;
     })
-
-
     this.lista.push(this.item);
     this.share.atualizarLista(this.lista);
-    console.log(this.lista);
 
     this.router.navigate(['']);
   }

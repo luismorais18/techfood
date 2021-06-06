@@ -17,7 +17,7 @@ import { HistoricoPage } from './Historico/historico/historico.page';
 
 
 @NgModule({
-  declarations: [AppComponent, PlateComponent, CartComponent, CartPlateComponent, HistoricoPage],
+  declarations: [AppComponent, PlateComponent, CartComponent, CartPlateComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },ScreenOrientation],

@@ -6,8 +6,9 @@
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button [routerLink]="['/cart']" >
+      <ion-button [routerLink]="['/cart']" class="button-cart">
         <ion-icon style="color:#D4C5C7" size="large" name="cart-outline"></ion-icon>
+        <ion-badge *ngIf="quantidadeCarrinho > 0" color="danger">{{ quantidadeCarrinho }}</ion-badge>
       </ion-button>
     </ion-buttons>
     <ion-title style="color:#D4C5C7">
@@ -26,7 +27,7 @@
   <div style="margin-top: 10px">
     <ion-item>
       <ion-label position="floating" style="color:#D4C5C7">Pesquisar</ion-label>
-      <ion-input style="color:#D4C5C7" clearInput ></ion-input>
+      <ion-input style="color:#3C3744" clearInput ></ion-input>
     </ion-item>
   <!-- Input with clear button when there is a value -->
 
