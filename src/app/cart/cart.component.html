@@ -17,11 +17,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-
-
-
             <ion-label (click)="verPrato(item)" style="display:flex;align-items:center;">
-
               <ion-row>
                 <ion-col  style="display:flex;align-items:center;">
                   <img style="margin-right: 3px" src="https://source.unsplash.com/50x50/?food" class="img-plate" style="margin-right: 3px;">
@@ -43,7 +39,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-grid>
+  <ion-grid *ngIf="carrinho && lista.length > 0">
     <ion-row>
       <ion-col style="display:flex;align-items:center;">
         <h5>Entrega</h5>
@@ -61,9 +57,17 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <div *ngIf="lista.length == 0" style="display:flex;justify-content:center;align-items:center;">
+    <h3 style="color:rgba(60, 55, 68, 0.75)">O seu carrinho está vazio</h3>
+  </div>
+  <div *ngIf="lista.length == 0" style="display:flex;justify-content:center;align-items:center; padding: 50px;" >
+    <img src="../../assets/empty.svg" alt="" style="height: 50%;">
+  </div>
+
 </ion-content>
 <ion-toolbar class="ion-padding">
   <div style="display:flex;justify-content:center;align-items:center;">
-    <ion-button class="button-continue" color="tertiary" [routerLink]="['/pagamento']">Continuar para pagamento</ion-button>
+    <ion-button [disabled]="carrinho && lista.length <= 0" class="button-continue" color="tertiary" [routerLink]="['/pagamento']">Continuar para pagamento</ion-button>
   </div>
 </ion-toolbar>

@@ -66,6 +66,7 @@ export class JsonServiceService {
             temp.preco=json[i][j]["preco"];
             temp.conteudo=json[i][j]["conteudo"];
             temp.conteudoOriginal=json[i][j]["conteudoOriginal"];
+            temp.quantidade=json[i][j]["quantidade"];
             tempList.push(temp);
           }
           list.push(tempList);

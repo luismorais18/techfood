@@ -58,6 +58,8 @@ export class CartComponent implements OnInit {
                 this.precoTotal = this.precoTotal - ( item.preco * item.quantidade) ;
               }
             }
+
+            this.shareService.atualizarLista(this.lista);
           }
         }
       ]
